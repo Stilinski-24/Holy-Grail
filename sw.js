@@ -1,5 +1,5 @@
 // Guarda os arquivos do app para abrir rápido e funcionar sem internet.
-const CACHE = 'holy-grail-v1';
+const CACHE = 'holy-grail-v2';
 const ARQUIVOS = ['./', './index.html', './app.js', './manifest.webmanifest', './icone-192.png', './icone-512.png', './icone-180.png'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ARQUIVOS))); self.skipWaiting(); });
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k))))); self.clients.claim(); });
